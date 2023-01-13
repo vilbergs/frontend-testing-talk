@@ -11,8 +11,6 @@ const router = useRouter()
 async function handleLogout() {
   await logout()
 
-  console.log('hej')
-
   store.setUser(null)
 
   await router.push({ name: 'Login' })

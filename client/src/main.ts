@@ -40,7 +40,6 @@ function setupApp(user: any) {
   store.setUser(user)
 
   router.beforeEach(async (to, from) => {
-    console.log(to, from)
     if (
       // make sure the user is authenticated
       !store.user &&

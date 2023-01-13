@@ -19,7 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->prefix('users')->controller(TodoController::class)->group(function () {
-    Route::get('/{user}/todos', 'index');
+Route::middleware('auth:sanctum')->prefix('todos')->controller(TodoController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::patch('/{todo}', 'update');
 });
-

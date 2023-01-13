@@ -21,5 +21,12 @@ export const useAppStore = defineStore('app', {
     setTodos(todos: Record<string, any>[]) {
       this.todos = todos
     },
+    setSingleTodo(todo: Record<string, any>) {
+      const todoIndex = this.todos.findIndex(
+        (existingTodo: any) => Number(existingTodo.id) === Number(todo.id)
+      )
+
+      this.todos[todoIndex] = todo
+    },
   },
 })

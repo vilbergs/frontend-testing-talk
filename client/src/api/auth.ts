@@ -1,24 +1,30 @@
 import api from '.'
 
 export async function login(email: string, password: string) {
-  await api.get('/sanctum/csrf-cookie')
-
-  await api.post('/login', {
+  const response = await api.post('/api/login', {
     email,
     password,
   })
 
-  const response = await api.get('/api/user')
+  localStorage.setItem('token', JSON.stringify(response.data.token))
 
-  return response.data
+  return response.data.user
 }
 
 export async function logout() {
-  return api.post('/logout')
+  return api.post('/api/logout')
 }
 
 export async function getCurrentUser() {
+  const token = localStorage.getItem('token')
+
+  if (!token) {
+    return null
+  }
+
   const response = await api.get('/api/user')
+
+  localStorage.removeItem('token')
 
   return response.data
 }

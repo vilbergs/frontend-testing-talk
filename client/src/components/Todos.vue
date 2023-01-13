@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps(['items'])
-
 const emit = defineEmits(['toggle', 'add'])
 
 const currentTitle = ref('')
@@ -16,22 +15,31 @@ function handleChange(event: any, item: any) {
 function handleAdd() {
   emit('add', currentTitle.value)
 }
+
+watch(
+  () => props.items,
+  (items) => {
+    console.log(items)
+  }
+)
 </script>
 <template>
   <div class="Todos">
     <div>
-      <input type="text" placeholder="Create Todo" v-model="currentTitle" />
+      <input type="text" placeholder="Add Todo" v-model="currentTitle" />
       <button @click="handleAdd">Add</button>
     </div>
     <ul class="list">
       <li v-for="item in props.items" class="list__item">
-        <input
-          type="checkbox"
-          :key="item.id"
-          :checked="item.is_complete"
-          @change="(event) => handleChange(event, item)"
-        />
-        <span>{{ item.title }}</span>
+        <label>
+          <input
+            type="checkbox"
+            :key="item.id"
+            :checked="item.is_complete"
+            @change="(event) => handleChange(event, item)"
+          />
+          {{ item.title }}
+        </label>
       </li>
     </ul>
   </div>

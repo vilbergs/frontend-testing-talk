@@ -6,12 +6,14 @@ import { getTodos } from '../api/todos'
 const emit = defineEmits(['authenticated'])
 
 const credentials = reactive({
-  username: 'vilberg@exam.net',
-  password: 'password',
+  username: '',
+  password: '',
 })
 
 async function loginWithCredentials() {
   const user = await login(credentials.username, credentials.password)
+
+  console.log(user)
 
   emit('authenticated', user)
 }
@@ -21,7 +23,7 @@ async function loginWithCredentials() {
   <div class="form">
     <label for="">
       Username
-      <input type="text" v-model="credentials.username" />
+      <input type="email" v-model="credentials.username" />
     </label>
     <label for="">
       Password

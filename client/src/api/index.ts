@@ -7,6 +7,7 @@ const api = axios.create({
   baseURL: BASE_PATH,
   headers: {
     Accept: 'application/json',
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
   },
 })
 

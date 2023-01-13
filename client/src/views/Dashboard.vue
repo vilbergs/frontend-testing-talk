@@ -4,6 +4,7 @@ import { useAppStore } from '../stores/'
 import { onMounted, ref } from 'vue'
 import { getTodos, createTodo, updateTodo } from '../api/todos'
 import Todos from '../components/Todos.vue'
+import { Console } from 'console'
 
 const store = useAppStore()
 

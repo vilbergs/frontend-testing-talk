@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`toUpperCase 1`] = `
+<div>
+  <button
+    class="beautiful-styling"
+    style="background: blue;"
+  >
+    
+    
+  </button>
+</div>
+`;

@@ -9,7 +9,6 @@ const store = useAppStore()
 const router = useRouter()
 
 async function handleAuthentication(user) {
-  console.log(user)
   store.setUser(user)
 
   await router.push({ name: 'Dashboard' })

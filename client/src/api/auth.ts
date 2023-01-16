@@ -6,12 +6,14 @@ export async function login(email: string, password: string) {
     password,
   })
 
-  localStorage.setItem('token', JSON.stringify(response.data.token))
+  localStorage.setItem('token', response.data.token)
 
   return response.data.user
 }
 
 export async function logout() {
+  localStorage.removeItem('token')
+
   return api.post('/api/logout')
 }
 
@@ -23,8 +25,6 @@ export async function getCurrentUser() {
   }
 
   const response = await api.get('/api/user')
-
-  localStorage.removeItem('token')
 
   return response.data
 }

@@ -3,14 +3,7 @@ import { render, fireEvent } from './utils'
 import { test, expect } from 'vitest'
 
 test.only('Creating a todo', async () => {
-  const {
-    getByText,
-    getByLabelText,
-    getByPlaceholderText,
-    getByRole,
-    debug,
-    findByText,
-  } = render(Dashboard)
+  const { getByPlaceholderText, getByRole, findByText } = render(Dashboard)
 
   const input = getByPlaceholderText(/add todo/i)
 

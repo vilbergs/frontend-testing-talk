@@ -17,7 +17,5 @@ test.describe('Logging in', () => {
     await page.getByPlaceholder('Add todo').fill('Buy milk')
 
     await page.getByText('Add').click()
-
-    await page.pause()
   })
 })

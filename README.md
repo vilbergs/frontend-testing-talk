@@ -12,6 +12,7 @@ The server is a Laravel api. Provided you have all the required tools for runnin
 
 1. `cd server`
 2. `composer install`
+2. `php artisan migrate`
 3. `php artisan serve --port 8080`
 
 **Note:** The default laravel dev server uses port `8000`, but the client sends request to port `8080` specifically
